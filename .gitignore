@@ -1,0 +1,52 @@
+# Input/Output directories
+input/*_in/
+input/*.txt
+input/*.tsv
+input/*.fasta
+output/
+jobs/
+figures/
+
+# Python virtual environment
+venv/
+env/
+.env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# R
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+
+# Logs
+*.log 
