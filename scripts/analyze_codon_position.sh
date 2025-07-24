@@ -33,19 +33,36 @@ fi
 # Create required directories
 mkdir -p output jobs figures
 
-# File naming
-fasta_out="output/query_${seq_id}_${pos}.fasta"
-codon_out="output/query_${seq_id}_${pos}.tab"
+# Define job ID first (moved up)
 job_id="$(echo "$aid" | tr '[:upper:]' '[:lower:]')"
 job_version="$(echo "${seq_id//_/-}-${pos}" | tr '[:upper:]' '[:lower:]')"
+
+# Create aid-specific directories
+mkdir -p "output/${job_id}" "figures/${job_id}"
+
+# File naming
+fasta_out="output/${job_id}/query_${seq_id}_${pos}.fasta"
+codon_out="output/${job_id}/query_${seq_id}_${pos}.tab"
 job_dir="jobs/${job_id}-${job_version}"
-compare_out="output/compare_strands_${seq_id}_${pos}.tab"
+compare_out="output/${job_id}/compare_strands_${seq_id}_${pos}.tab"
 
 # Create job directory before running anything
 mkdir -p "$job_dir"
 
+
 # generate all codon variants at position 83
 # change seq-id for each population
+python3 scripts/generate_codons_variants.py \
+  --fasta "$input_fasta" \
+  --codon-table input/codon_table \
+  --aa-coord "$pos" \
+  --seq-id "$seq_id" \
+  --output-fasta "$fasta_out" \
+  --output-codon-table "$codon_out" \
+  --left-margin "$left_margin" \
+  --right-margin "$right_margin" \
+  --gene-start "$gene_start" \
+  --gene-end "$gene_end"
 
 # submit job
 evo_gcp submit --job "$job_id" \
@@ -75,5 +92,5 @@ plot_strand_scatter(
   ifn_tab='$compare_out',
   ifn_codon='$codon_out',
   title='${seq_id}_pos_${pos}',
-  fdir='figures')
+  fdir='figures/${job_id}')
 "

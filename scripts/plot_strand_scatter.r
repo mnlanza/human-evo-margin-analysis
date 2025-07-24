@@ -39,7 +39,7 @@ plot_strand_scatter <- function(ifn_tab, ifn_codon, title, fdir) {
     coord_fixed() # Make plot square with equal aspect ratio
 
   # Save plot as PDF
-  ofn <- file.path(fdir, sprintf("P_vs_M_strands_%s.pdf", title))
+  ofn <- file.path(fdir, sprintf("PvM_%s.pdf", title))
   ggsave(ofn, p, width = 8, height = 8)
 
   cat("Plot saved to:", ofn, "\n")

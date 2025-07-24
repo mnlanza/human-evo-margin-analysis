@@ -90,11 +90,11 @@ def main():
     right_margin = contig_seq[args.gene_end:min(len(contig_seq), args.gene_end + args.right_margin)]
 
     #### TESTING ####
-    variant_seq = gene_seq[:nt_start] + "XXX" + gene_seq[nt_end:]
-    print(f'here is the variant seq:{variant_seq} with length: {len(variant_seq)}')
-    print(f"gene seq: {gene_seq}")
-    print(f"Original seq: {contig_seq[:args.gene_start-1]}{gene_seq}{contig_seq[args.gene_end:]} and seq length {len(contig_seq[:args.gene_start-1]+gene_seq+contig_seq[args.gene_end:])}")
-    print(f"Margin seq: {left_margin}{gene_seq}{right_margin} and margin length: {len(left_margin+gene_seq+right_margin)}") 
+    # variant_seq = gene_seq[:nt_start] + "XXX" + gene_seq[nt_end:]
+    # print(f'here is the variant seq:{variant_seq} with length: {len(variant_seq)}')
+    # print(f"gene seq: {gene_seq}")
+    # print(f"Original seq: {contig_seq[:args.gene_start-1]}{gene_seq}{contig_seq[args.gene_end:]} and seq length {len(contig_seq[:args.gene_start-1]+gene_seq+contig_seq[args.gene_end:])}")
+    # print(f"Margin seq: {left_margin}{gene_seq}{right_margin} and margin length: {len(left_margin+gene_seq+right_margin)}") 
 
     
     print(f"Generating file: {args.output_fasta}")

@@ -129,6 +129,8 @@ def check_contigs(contig_df: pd.DataFrame, write_fasta: bool = False, output_pat
         if codon != desired_codon:
             print(f"Codon {codon} is incorrect")
             print(f"Expected: {desired_codon}, Actual: {codon}")
+        else:
+            print(f"Codon {codon} is correct")
             
         # Append original contig
         contigs.append((changed_contig_seq, row['contig']))
