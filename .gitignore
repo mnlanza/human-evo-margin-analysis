@@ -5,7 +5,6 @@ input/*.tsv
 input/*.fasta
 output/
 jobs/
-figures/
 
 # Python virtual environment
 venv/
