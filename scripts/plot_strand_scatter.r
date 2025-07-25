@@ -20,9 +20,12 @@ plot_strand_scatter <- function(ifn_tab, ifn_codon, title, fdir) {
     scale_color_manual(values = c("FALSE" = "#2c7bb6", "TRUE" = "#d7191c")) +
     geom_text_repel(aes(label = label),
       size = 3.5,
-      box.padding = 0.5,
-      point.padding = 0.2,
-      force = 10
+      box.padding = 1,
+      point.padding = 0.5,
+      force = 20,
+      max.overlaps = Inf,
+      min.segment.length = 0,
+      seed = 42
     ) +
     theme_minimal() +
     labs(
