@@ -118,19 +118,19 @@ def main():
             out.write(f"{rc_seq}\n")
 
 if __name__ == "__main__":
-    # if len(sys.argv) == 1:
-    #     # Test mode (no CLI args passed)
-    #     sys.argv = [
-    #         "test_run",
-    #         "--fasta", "test.fasta",
-    #         "--codon-table", "input/codon_table",
-    #         "--aa-coord", "2",
-    #         "--seq-id", "test_seq",
-    #         "--output-fasta", "output/test_output.fasta",
-    #         "--output-codon-table", "output/test_codons.tsv",
-    #         "--gene-start", "6",
-    #         "--gene-end", "14",
-    #         "--left-margin", "3",
-    #         "--right-margin", "4"
-    #     ]
+    if len(sys.argv) == 1:
+        # Test mode (no CLI args passed)
+        sys.argv = [
+            "test_run",
+            "--fasta", "input/human_contigs_src.fasta",
+            "--codon-table", "input/codon_table",
+            "--aa-coord", "152",
+            "--seq-id", "k77_114799",
+            "--output-fasta", "output/test_output.fasta",
+            "--output-codon-table", "output/test_codons.tsv",
+            "--gene-start", "41459",
+            "--gene-end", "44200",
+            "--left-margin", "2000",
+            "--right-margin", "1000"
+        ]
     main()

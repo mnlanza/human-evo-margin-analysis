@@ -1,0 +1,3 @@
+aid	gene	contig	start	end	strand	flipped	src_codon	tgt_codon	mut_pos
+TST	g1_test	test_seq	6	14	+	False	ATG	TTG	2
+TS2	g2_test	test_seq2	4	17	-	True	GTC	TTC	2 

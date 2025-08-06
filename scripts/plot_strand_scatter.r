@@ -19,17 +19,18 @@ plot_strand_scatter <- function(ifn_tab, ifn_codon, title, fdir) {
     geom_point(aes(color = is_ref), size = 3) +
     scale_color_manual(values = c("FALSE" = "#2c7bb6", "TRUE" = "#d7191c")) +
     geom_text_repel(aes(label = label),
-      size = 3.5,
-      box.padding = 1,
-      point.padding = 0.5,
-      force = 20,
-      max.overlaps = Inf,
-      min.segment.length = 0,
+      size = 3,                    # Slightly smaller text
+      box.padding = 0.5,           # Less padding around text
+      point.padding = 0.3,         # Less padding from points
+      force = 2,                   # Much gentler repulsion force
+      max.overlaps = 15,           # Limit number of overlapping labels
+      min.segment.length = 0.1,    # Slightly longer minimum segments
+      direction = "both",          # Allow both x and y movement
       seed = 42
     ) +
     theme_minimal() +
     labs(
-      title = sprintf("Position %s\nReference: %s", title, ref_id),
+      title = sprintf("Subject: %s\nReference: %s", title, ref_id),
       x = "Plus Strand Log-Likelihood",
       y = "Minus Strand Log-Likelihood"
     ) +

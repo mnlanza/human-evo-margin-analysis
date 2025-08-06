@@ -70,12 +70,12 @@ evo_gcp submit --job "$job_id" \
   --input_fasta "$(pwd)/$fasta_out" \
   --job_version "$job_version" \
   --wait
+# output_type embedding 
 
 # download results
 evo_gcp download --job "$job_id" \
   --job_version "$job_version" \
-  --jobs_dir "$(pwd)/jobs" \
-  --output_type summary_only
+  --jobs_dir "$(pwd)/jobs"
 
 # Create strand comparison table
 Rscript -e "
@@ -91,6 +91,6 @@ source('scripts/plot_strand_scatter.r')
 plot_strand_scatter(
   ifn_tab='$compare_out',
   ifn_codon='$codon_out',
-  title='${seq_id}_pos_${pos}',
+  title='${aid}_pos_${pos}',
   fdir='figures/${job_id}')
 "

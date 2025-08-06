@@ -7,7 +7,7 @@ mkdir -p input output jobs figures
 # Shared parameters
 left_margin=4  # Smaller margin for test sequence
 right_margin=4  # Smaller margin for test sequence
-input_fasta="input/test.fasta"
+input_fasta="testing/input/test.fasta"
 
 # Read TSV file line by line, skipping header
 while IFS=$'\t' read -r aid gene contig start end strand flipped src_codon tgt_codon mut_pos || [ -n "$contig" ]; do
@@ -24,4 +24,4 @@ while IFS=$'\t' read -r aid gene contig start end strand flipped src_codon tgt_c
     echo "  → Running position $pos"
     ./scripts/FR_all_pipeline.sh "$pos" "$start" "$end" "$contig" "$aid" "$input_fasta" "$left_margin" "$right_margin"
   done
-done < "input/test_data.tsv" 
+done < "testing/input/test_data.tsv" 

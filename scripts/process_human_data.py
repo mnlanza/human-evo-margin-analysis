@@ -116,7 +116,8 @@ def check_contigs(contig_df: pd.DataFrame, write_fasta: bool = False, output_pat
             working_contig_seq = contig_seq # already a string
         else:
             raise ValueError(f"Invalid strand: {row['strand']}")
-        contig_df.loc[index, 'mut_pos'] = ((mutg_pos + 2 )// 3)
+
+        contig_df.loc[index, 'mut_pos'] = ((mutg_pos + 2) // 3)
         desired_codon = row['src_codon']
         codon = working_contig_seq[contig_mut_pos:contig_mut_pos+3]
         # using source codon if flipped is true
@@ -154,11 +155,14 @@ def main():
     
     args = parser.parse_args()
 
+    
     if args.write_fasta and not args.fasta_path:
         parser.error("--fasta-path is required when --write-fasta is set")
-
+        
+    print(f'original df: {make_df()}')
     updated_df = check_contigs(make_df(), write_fasta=args.write_fasta,
                              output_path=args.fasta_path)
+    print(f'updated df: {updated_df}')
 
     if args.output_tsv:
         updated_df.to_csv(args.output_tsv, sep='\t', index=False)
